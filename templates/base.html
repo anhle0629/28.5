@@ -1,0 +1,44 @@
+<html>
+
+<head>
+  <title> Flask Feedback &ndash; {% block title %}{% endblock %} </title>
+  <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css">
+
+</head>
+
+<body>
+  <nav class="navbar navbar-light bg-primary justify-content-between ">
+    <div class="container">
+        <a href="/" class="navbar-brand text-light">Excerise</a>
+    </div>
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Flash Feedback</a>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+
+      {% if username in session %}
+      <a class="nav-link" href="logout">Logout</a>
+      {% else %}
+      <a class="nav-link" href="login">login</a>
+      {% endif %}
+      </li>
+      
+    </ul>
+  </nav>
+
+<div class="container mt-5">
+  {% for msg in get_flashed_messages() %}
+  <div class="alert alert-info">{{ msg }}</div>
+  {% endfor %}
+
+  {% block content %}
+  <!-- put the content here what is that? -->
+  {% endblock %}
+
+</div>
+
+</body>
+
+</html>
